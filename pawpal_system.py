@@ -12,6 +12,7 @@ class Task:
     scheduled_time: Optional[str] = None
 
     def mark_complete(self):
+        """Mark this task as completed."""
         self.completed = True
 
 
@@ -22,6 +23,7 @@ class Pet:
     tasks: list[Task] = field(default_factory=list)
 
     def add_task(self, task: Task):
+        """Add a task to this pet."""
         self.tasks.append(task)
 
 
@@ -32,9 +34,11 @@ class Owner:
         self.pets: list[Pet] = []
 
     def add_pet(self, pet: Pet):
+        """Add a pet to this owner."""
         self.pets.append(pet)
 
     def get_all_tasks(self):
+        """Return all tasks from all of the owner's pets."""
         all_tasks = []
 
         for pet in self.pets:
@@ -48,6 +52,7 @@ class Scheduler:
         self.tasks: list[Task] = []
 
     def get_tasks(self, owner: Owner):
+        """Get all pet-care tasks for an owner."""
         self.tasks = owner.get_all_tasks()
         return self.tasks
 
