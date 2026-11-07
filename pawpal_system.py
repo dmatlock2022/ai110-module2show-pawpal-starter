@@ -97,7 +97,23 @@ class Scheduler:
         ]
 
     def build_schedule(self, available_minutes: int):
-        pass
+        """Build a schedule using priority and available time."""
+        schedule = []
+        time_used = 0
+
+        # Lower priority number means the task is more important
+        incomplete_tasks = self.filter_tasks(completed=False)
+        priority_tasks = sorted(
+            incomplete_tasks,
+            key=lambda task: task.priority
+        )
+
+        for task in priority_tasks:
+            if time_used + task.duration_minutes <= available_minutes:
+                schedule.append(task)
+                time_used += task.duration_minutes
+
+        return schedule
 
     def detect_conflicts(self):
         """Find tasks that are scheduled at the same time."""

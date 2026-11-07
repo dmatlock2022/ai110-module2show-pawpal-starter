@@ -88,3 +88,15 @@ if conflicts:
         print(f"WARNING: {conflict}")
 else:
     print("No conflicts found.")
+
+# Build a schedule based on available time
+print("\nDaily Plan")
+print("----------")
+
+daily_plan = scheduler.build_schedule(dylan.available_minutes)
+
+for task in daily_plan:
+    print(
+        f"- {task.title} "
+        f"({task.duration_minutes} min, priority {task.priority})"
+    )
