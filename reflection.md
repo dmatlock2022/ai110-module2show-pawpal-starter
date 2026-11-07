@@ -38,6 +38,8 @@ The relationships are that one Owner can have multiple Pets, and each Pet can ha
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
 
+For conflict detection, I used two loops to compare each task with the tasks after it and check whether they have the same scheduled time. AI suggested that I could use a dictionary to group tasks by time, which could be faster if there were a very large number of tasks. I decided to keep the loop version because PawPal+ should only have a small number of pet-care tasks at a time, and the loop version was easier for me to understand and explain. The tradeoff is that the current version may be slower with a very large task list, but it keeps the code simpler for this project.
+
 ---
 
 ## 3. AI Collaboration
